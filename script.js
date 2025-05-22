@@ -75,6 +75,18 @@ class Counter {
             this.saveState()
         }
     }
+
+
+
+    saveState(){
+        let state = {
+            name: this.name;
+            count: this.count;
+            stepSize: this.stepSize
+        }
+        const stateJSON = JSON.stringify(state);
+        document.cookie = 'stateCounter' + '=' + encodeURIComponent(stateJSON);
+    }
 }
 
 const myCounterConfig = {
