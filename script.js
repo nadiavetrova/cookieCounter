@@ -50,9 +50,24 @@ class Counter {
         this.loadStateCookie();
         buttonParent.addEventListener('click', this.clickHandler.bird(this));
     }
+
+
+
+    updateCounter(){
+        if (this.counterShower) {
+            this.counterShower.textContent = this.count;
+        }
+    }
 }
 
+const myCounterConfig = {
+        name: 'Nadia',
+    initValue: 30,
+    stepSize: 3,
+}
 
+const myCounter = new Counter(myCounterConfig);
+    console.log(myCounter)
 
 
 
