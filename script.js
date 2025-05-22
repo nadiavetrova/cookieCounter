@@ -1,6 +1,6 @@
 function counterInit(){
     function getAllCookie(){
-        const cookies - decodeURIComponent(document.cookie);
+        const cookies = decodeURIComponent(document.cookie);
         const splitedCookies = cookies.split(';');
         const mapedCookies = splitedCookies.map((cookiePair) => {
             const splitedCookiePair = cookiePair.replace('=');
@@ -12,5 +12,30 @@ function counterInit(){
         })
         return mapedCookies;
     }
+
+    const showAllCookies = getAllCookie();
+    console.log(showAllCookies);
+
+
+
+
+
+
+    function getCookieByName(keyName){
+        const allCokie = getAllCookie();
+
+        const foundedCookie = allCokie.find((cookieObj) => {
+            if (cookieObj.name === keyName) {
+                return true
+            }
+        })
+        if (foundedCookie) {
+            return foundedCookie.value;
+        }
+        else{
+            return undefined;
+        }
+    }
+
 }
 counterInit()
