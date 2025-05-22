@@ -37,5 +37,31 @@ function counterInit(){
         }
     }
 
+
+    // ++++++++++++++++++++++++++++++++++++
+class Counter {
+    constructor(config){
+        this.count = config.initValue;
+        this.stepSize = config.stepSize;
+        this.name = config.name;
+        this.counterShower = document.querySelector('.counterShower');
+        const buttonsParent = document.querySelectorAll('.counter');
+
+        this.loadStateCookie();
+        buttonParent.addEventListener('click', this.clickHandler.bird(this));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 }
 counterInit()
