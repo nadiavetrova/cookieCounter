@@ -45,10 +45,11 @@ class Counter {
         this.stepSize = config.stepSize;
         this.name = config.name;
         this.counterShower = document.querySelector('.counterShower');
-        const buttonsParent = document.querySelectorAll('.counter');
+        const buttonsParent = document.querySelector('.counter');
 
-        this.loadStateCookie();
-        buttonParent.addEventListener('click', this.clickHandler.bird(this));
+        this.loadStateFromCookie();
+        buttonsParent.addEventListener('click', this.clickHandler.bind(this));
+        this.updateCounter();
     }
 
 
@@ -80,12 +81,26 @@ class Counter {
 
     saveState(){
         let state = {
-            name: this.name;
-            count: this.count;
+            name: this.name,
+            count: this.count,
             stepSize: this.stepSize
         }
         const stateJSON = JSON.stringify(state);
         document.cookie = 'stateCounter' + '=' + encodeURIComponent(stateJSON);
+    }
+
+
+
+    loadStateFromCookie(){
+        const stateCounter = getCookieByName('stateCounter');
+        if (stateCounter) {
+            const parsed = JSON.parse(stateCounter);
+            this.count = parsed.count;
+            this.stepSize = parsed.stepSize;
+            this.name = parsed.name;
+
+            this.updateCounter()
+        }
     }
 }
 
