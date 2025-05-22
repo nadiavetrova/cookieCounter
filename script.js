@@ -58,6 +58,23 @@ class Counter {
             this.counterShower.textContent = this.count;
         }
     }
+
+
+    clickHandler(e){
+        const target = e.target;
+        const isBtn = target.tagName === 'BUTTON';
+
+        if (isBtn) {
+            if (target.classList.contains('plus')) {
+                this.count += this.stepSize;
+            }
+            else if (target.classList.contains('minus')) {
+                this.count -= this.stepSize;
+            }
+            this.updateCounter();
+            this.saveState()
+        }
+    }
 }
 
 const myCounterConfig = {
